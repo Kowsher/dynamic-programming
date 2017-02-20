@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int dp[100]; ///finbonacci with the help of dynamic programming,it's one kind of  overlapping subproblems
+
+int f(int n){
+    if(n==0)return dp[n]=0;
+    if(n==1)return dp[n]=1;
+    if(dp[n]!=-1)return dp[n];
+    else return dp[n]=(f(n-1)+f(n-2));
+
+}
+int main()
+{
+    fill_n(dp, 100, -1);
+    int n;
+    cout<<"Input number ";cin>>n;
+    f(n);
+    for(int i=0; i<10;i++)cout<<dp[i]<<" ";
+    return 0;
+}
