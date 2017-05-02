@@ -1,0 +1,11 @@
+
+basic of dp 
+how dp works 
+general formulation 
+def function(state1, state2, ...., staten)
+ {
+     if(base_case)return ///return or exit recursive calling when it turns to base case
+     if(computed already)return table (calculated value) /// overlapping or subprograms which is already computed
+     return table=calculated ///calculate which is not calculated already and save them in table
+        
+ }
