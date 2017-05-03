@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool cmp(pair<int,double> p, pair<int,double> q)
+{
+    return p.second > q.second;
+}
+
+int main()
+{
+    int n,capacity,wight,value,total_wight,mi;
+    double density,sum=0.0;
+
+    cout<<"Input the number of obj : " ; cin>>n;
+
+    cout<<"Input the capacity : ";cin>>capacity;
+
+    vector<pair<int,double>>v;
+
+    cout<<" Input wight and value of obj : "<<endl;
+
+    while(n--){
+        cin>>wight>>value;
+        density=(double)value/(double)wight;
+        v.push_back(make_pair(wight,density));
+    }
+
+    sort(v.begin(),v.end(),&cmp);
+
+    for(int i=0; i<v.size(); i++){
+        if(capacity==0)break;
+        mi=min(capacity,v[i].first);
+        capacity-=mi;
+        sum=sum+(double)mi*v[i].second;
+    }
+
+    cout<<sum<<endl;
+
+    return 0;
+}
