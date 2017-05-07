@@ -1,0 +1,40 @@
+/// A Dynamic Programming based solution for 0-1 Knapsack problem
+///Time Complexity: O(nW) where n is the number of items and W is the capacity
+///of knapsack
+/// Full ok code.
+#include <bits/stdc++.h>
+
+using namespace std;
+/// Returns the maximum value that can be put in a knapsack of capacity W
+
+int KnapSack (int cap, int wt[], int val[], int n)
+{
+    int i, w;
+    int table[n+1][cap+1];
+    /// Build table K[][] in bottom up manner
+    for (i=0; i<=n; i++)
+    {
+        for (w=0; w<=cap; w++)
+        {
+            if (i==0 || w==0)table[i][w]=0;
+
+            else if (wt[i-1]<=w)table[i][w]=max (val[i-1]+table[i-1][w-wt[i-1]], table[i-1][w]);
+
+            else table[i][w]=table[i-1][w];
+        }
+    }
+    return table[n][cap];
+}
+
+int main ()
+{
+    int wt[100], val[100], i, cap, n;
+    cout<<"Input the number of item and capacity : ";
+    cin >> n >> cap;
+    cout<<"Input the wight and its value according to item number " <<endl;
+    for (i=0; i<n; i++){
+        cin >> wt[i]>>val[i];
+    }
+    cout << KnapSack(cap, wt, val, n);
+    return 0;
+}
