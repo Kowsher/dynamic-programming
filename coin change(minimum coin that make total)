@@ -1,0 +1,38 @@
+///Find the minimum  coin that make total
+///this is done by bottom up manner
+#include<bits/stdc++.h>
+using namespace std;
+
+int minCoins(int coins[], int n, int total)
+{
+    int table[total+1],value[total+1];
+    memset(value,-1,sizeof(value));
+    memset(table,total+2,sizeof(table));
+    table[0]=0;
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<=total; j++)
+        {
+            if(coins[i]<=j){
+                    int x=table[j];
+                    table[j]=min(table[j],table[j-coins[i]]+1);
+                    if(x!=table[j])value[j]=i;
+
+            }
+        }
+    }
+   for(int i=total; i>0;)
+   {
+       cout<<coins[value[i]]<<" ";
+       i=i-coins[value[i]];
+   }
+}
+int main()
+{
+     int coins[] =  {7,2, 3, 6};
+    int n = 4;
+    int total = 13;
+
+   minCoins(coins,n,total);
+}
