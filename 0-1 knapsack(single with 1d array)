@@ -1,16 +1,39 @@
-int A[25000+5];
+#include <bits/stdc++.h>
+using namespace std;
 
-int wt[100+5];
-int knapSack(int N, int W){
-    for(int i = 0; i<= W; i++) A[i] = 0;
 
-    for(int i = 1; i<= N; i++){
-        for(int j = W; j>0; j--){
-            if(wt[i]<= j) A[j] = max(A[j], wt[i] + A[j - wt[i]]);
+
+
+int KnapSack(int indx, int cap, int wt[]){
+    int table[cap+1];
+    for(int i = 0; i<= cap; i++) table[i] = 0;
+
+    for(int i = 1; i<= indx; i++){
+        for(int j = 1; j<=cap; j++){
+            if(wt[i]<= j) table[j] = max(table[j], wt[i] + table[j - wt[i]]);
+            cout<<table[j]<<" ";
 
 
         }
+        cout<<endl;
 
     }
-   return A[W];
+   return table[cap];
+}
+
+int main ()
+{
+    int wt[100], val[100], i, cap, n;
+    wt[0]=0;
+    cout<<"Input the number of item and capacity : ";
+    cin >> n >> cap;
+    cout<<"Input the wight  according to item number " <<endl;
+    for (i=1; i<=n; i++){
+        cin >> wt[i];
+    }
+    cout << KnapSack(n, cap, wt);
+    return 0;
+
+
+    return 0;
 }
