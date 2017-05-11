@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+
+int KnapSack(int indx, int cap, int wt[]){
+    int table[cap+1];
+    for(int i = 0; i<= cap; i++) table[i] = 0;
+
+    for(int i = 1; i<= indx; i++){
+        for(int j = cap; j>0; j--){
+            if(wt[i]<= j) table[j] = max(table[j], wt[i] + table[j - wt[i]]);
+            cout<<table[j]<<" ";
+
+
+        }
+        cout<<endl;
+
+    }
+   return table[cap];
+}
+
+int main ()
+{
+    int wt[100], val[100], i, cap, n;
+    wt[0]=0;
+    cout<<"Input the number of item and capacity : ";
+    cin >> n >> cap;
+    cout<<"Input the wight  according to item number " <<endl;
+    for (i=1; i<=n; i++){
+        cin >> wt[i];
+    }
+    cout << KnapSack(n, cap, wt);
+    return 0;
+
+
+    return 0;
+}
