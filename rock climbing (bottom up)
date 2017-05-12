@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int mat[][10] = {
+    { -1, 2, 5 },
+    { 14, -2, 11 },
+    {
+        12, 1, 10,
+    }
+};
+int finl,row=3,clm=3;
+
+int call(int i, int j)
+{
+    int ck1=mat[i][j],ck2=mat[i][j],ck3=mat[i][j],m,n;
+    m=i,n=j;
+    for(int w=i; w<row-1; w++){
+
+        if (m >= 0 && m < row and n >= 0 and n < clm)
+            {
+                m=m+1; n=n-1;
+                ck1+=mat[m][n];
+
+            }
+        else break;
+    }
+    m=i,n=j;
+     for(int w=i; w<row-1; w++)
+     {
+         if (m >= 0 && m < row and n >= 0 and n < clm)
+            {
+                m=m+1;
+                ck2+=mat[m][n];
+            }
+            else break;
+
+     }
+      m=i,n=j;
+     for(int w=i; w<row-1; w++){
+
+        if (m >= 0 && m < row and n >= 0 and n < clm)
+            {
+                m=m+1; n=n+1;
+                ck3+=mat[m][n];
+            }
+        else break;
+    }
+    
+    return finl=max(ck1,max(ck2,ck3));
+
+}
+int main()
+{
+    cout<<call(0,0);
+
+    return 0;
+}
