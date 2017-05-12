@@ -12,8 +12,10 @@ int finl,row=3,clm=3;
 
 int call(int i, int j)
 {
-    int ck1=mat[i][j],ck2=mat[i][j],ck3=mat[i][j],m,n;
-    m=i,n=j;
+    int ck1=mat[i][j],ck2=mat[i][j],ck3=mat[i][j],m,n,k,l,o,p;
+    
+    m=i,n=j,k=i,l=j,o=i,p=j;
+    
     for(int w=i; w<row-1; w++){
 
         if (m >= 0 && m < row and n >= 0 and n < clm)
@@ -22,35 +24,25 @@ int call(int i, int j)
                 ck1+=mat[m][n];
 
             }
-        else break;
-    }
-    m=i,n=j;
-     for(int w=i; w<row-1; w++)
-     {
-         if (m >= 0 && m < row and n >= 0 and n < clm)
+             if (k >= 0 && k < row and l >= 0 and l < clm)
             {
-                m=m+1;
-                ck2+=mat[m][n];
+                k=k+1;
+                ck2+=mat[k][l];
             }
-            else break;
-
-     }
-      m=i,n=j;
-     for(int w=i; w<row-1; w++){
-
-        if (m >= 0 && m < row and n >= 0 and n < clm)
+            if (o >= 0 && o < row and p >= 0 and p < clm)
             {
-                m=m+1; n=n+1;
-                ck3+=mat[m][n];
+                o=o+1; p=p+1;
+                ck3+=mat[o][p];
             }
-        else break;
     }
-    
+
+
     return finl=max(ck1,max(ck2,ck3));
 
 }
 int main()
 {
+
     cout<<call(0,0);
 
     return 0;
