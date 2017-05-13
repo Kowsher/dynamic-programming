@@ -1,7 +1,7 @@
+///this is native algorithms of LIS with time complexity O(n*n)
+
 #include<bits/stdc++.h>
-using namespace std;
-
-
+using namespace std; 
 
 int main()
 {
