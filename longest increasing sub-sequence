@@ -1,6 +1,7 @@
+///it's better aproch of longest increasing sub-sequence with time complexity O(nlogn)
+
 #include<bits/stdc++.h>
 using namespace std;
-
 
 int main()
 {
