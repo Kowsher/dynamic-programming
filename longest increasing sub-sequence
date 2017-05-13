@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    int input[n+1];
+
+    multiset < int > lis ;
+    multiset < int > :: iterator  it ;
+
+    for( int i = 0 ; i < n ; i++ )
+    {
+        cin>>input[i];
+        lis.insert( input[i]);
+        it = lis.upper_bound( input[i]);
+        if( it != lis.end()) lis.erase(it);
+    }
+    cout << lis.size() << endl ;
+
+
+    return 0;
+}
