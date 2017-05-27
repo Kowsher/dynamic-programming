@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int arr[100005];
+int Temp[100005], Result[100005];
+int Val[100005];
+int lislen;
+vector<int>path;
+int main()
+{
+
+    int n;
+    scanf("%d", &n);
+    for(int i=0; i<n; i++){
+    scanf("%d", arr+i);
+    }
+
+    lislen = 0;
+    memset(Result, -1,sizeof(Result));
+
+    int i, j, k, l;
+    int sz = 0;
+    for(i=0; i<n; i++){
+        if(i==0){
+            Temp[sz] = i;
+            Val[sz] = arr[Temp[sz]];
+            sz++;
+        }
+        else{
+            int idx = lower_bound(Val, Val+sz, arr[i]) - Val;
+            if(idx==sz){
+                Temp[sz] = i;
+                Val[sz] = arr[Temp[sz]];
+                Result[i] = Temp[sz-1];
+                sz++;
+                lislen++;
+            }
+            else{
+                Temp[idx] = i;
+                Val[idx] = arr[Temp[idx]];
+                if(idx!=0){
+                    Result[i] = Temp[idx-1];
+                }
+            }
+        }
+    }
+    printf("LIS Length is: %d\n", lislen+1);
+    for(int i=0; i<n; i++){
+        printf("%d ", Result[i]);
+    }
+    puts("");
+
+    int idx = Temp[sz-1];
+    path.push_back(arr[idx]);
+    while(Result[idx]!=-1){
+        path.push_back(arr[Result[idx]]);
+        idx = Result[idx];
+    }
+    for(i=path.size()-1; i>=0; i--){
+        printf("%d", path[i]);
+        if(i>0) printf(" -> ");
+    }
+}
